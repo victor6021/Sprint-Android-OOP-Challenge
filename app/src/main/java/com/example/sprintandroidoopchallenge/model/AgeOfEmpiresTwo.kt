@@ -1,19 +1,11 @@
 package com.example.sprintandroidoopchallenge.model
 
-data class AgeOfEmpiresTwo(val civil: Civil, val units:Units, val structures: Structures,val technologies: Technologies)
+open class AgeOfEmpiresTwo(val id: String, val expansion: String, val armyType: String, val isFavorite: Boolean)
 
-data class Civil(val civilizations: MutableList<Civilization>)
+class Civilization(id: String, expansion: String, armyType: String, isFavorite: Boolean): AgeOfEmpiresTwo(id,expansion, armyType,isFavorite)
 
-data class Units(val unit: MutableList<Unit>)
+class Unit(id: String, expansion: String, armyType: String, isFavorite: Boolean): AgeOfEmpiresTwo(id,expansion, armyType,isFavorite)
 
-data class Structures(val structure: MutableList<Structure>)
+class Structure(id: String, expansion: String, armyType: String, isFavorite: Boolean): AgeOfEmpiresTwo(id,expansion, armyType,isFavorite)
 
-data class Technologies(val technology: MutableList<Technology>)
-
-data class Civilization(val id: String, val expansion: String, val armyType: String, val isFavorite: Boolean)
-
-data class Unit(val id: String, val description: String, val age: String, val isFavorite: Boolean)
-
-data class Structure(val id: String, val description: String, val age: String, val isFavorite: Boolean)
-
-data class Technology(val id: String,val description: String, val age: String, val isFavorite: Boolean)
+class Technology(id: String, expansion: String, armyType: String, isFavorite: Boolean): AgeOfEmpiresTwo(id,expansion, armyType,isFavorite)
