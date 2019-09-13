@@ -7,18 +7,18 @@ class AoETwoViewModel {
     private var aoetwo: AgeOfEmpiresTwo = AgeOfEmpiresTwo("","","","")
 
     fun getCivilization(): String?{
-        return aoetwo.civil
+        return aoetwo.civil.civilizations.id
     }
 
     fun getUnit():String?{
-        return aoetwo.unit
+        return aoetwo.units.unit.id
     }
 
     fun getStructure():String?{
-        return aoetwo.structure
+        return aoetwo.structures.structure.id
     }
 
     fun getTech(): String?{
-        return aoetwo.technology
+        return aoetwo.technologies.technology.id
     }
 }

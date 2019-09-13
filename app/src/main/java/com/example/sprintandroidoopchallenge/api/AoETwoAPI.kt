@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface AoETwoAPI {
 
-    @GET("civitilzations")
+    @GET("civilizations")
     fun getCivil(): Call<List<AgeOfEmpiresTwo>>
 
     @GET("civilization/{id}")

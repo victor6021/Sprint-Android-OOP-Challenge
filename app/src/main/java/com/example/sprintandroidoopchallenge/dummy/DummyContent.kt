@@ -1,5 +1,6 @@
 package com.example.sprintandroidoopchallenge.dummy
 
+import com.example.sprintandroidoopchallenge.model.AgeOfEmpiresTwo
 import java.util.ArrayList
 import java.util.HashMap
 
@@ -14,12 +15,12 @@ object DummyContent {
     /**
      * An array of sample (dummy) items.
      */
-    val ITEMS: MutableList<DummyItem> = ArrayList()
+    val ITEMS: MutableList<AgeOfEmpiresTwo> = ArrayList()
 
     /**
      * A map of sample (dummy) items, by ID.
      */
-    val ITEM_MAP: MutableMap<String, DummyItem> = HashMap()
+    val ITEM_MAP: MutableMap<String, AgeOfEmpiresTwo> = HashMap()
 
     private val COUNT = 25
 
@@ -30,13 +31,13 @@ object DummyContent {
         }
     }
 
-    private fun addItem(item: DummyItem) {
+    private fun addItem(item: AgeOfEmpiresTwo) {
         ITEMS.add(item)
         ITEM_MAP.put(item.id, item)
     }
 
-    private fun createDummyItem(position: Int): DummyItem {
-        return DummyItem(position.toString(), "Item " + position, makeDetails(position))
+    private fun createDummyItem(position: Int): AgeOfEmpiresTwo {
+        return AgeOfEmpiresTwo(position.toString(), "Item " + position, makeDetails(position))
     }
 
     private fun makeDetails(position: Int): String {
@@ -51,7 +52,7 @@ object DummyContent {
     /**
      * A dummy item representing a piece of content.
      */
-    data class DummyItem(val id: String, val content: String, val details: String) {
+    data class AgeOfEmpiresTwo(val id: String, val content: String, val details: String) {
         override fun toString(): String = content
     }
 }

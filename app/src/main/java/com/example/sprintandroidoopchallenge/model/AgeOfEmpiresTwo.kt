@@ -4,11 +4,11 @@ data class AgeOfEmpiresTwo(val civil: Civil, val units:Units, val structures: St
 
 data class Civil(val civilizations: MutableList<Civilization>)
 
-data class Units(val units: MutableList<Unit>)
+data class Units(val unit: MutableList<Unit>)
 
-data class Structures(val structures: MutableList<Structure>)
+data class Structures(val structure: MutableList<Structure>)
 
-data class Technologies(val technologies: MutableList<Technology>)
+data class Technologies(val technology: MutableList<Technology>)
 
 data class Civilization(val id: String, val expansion: String, val armyType: String, val isFavorite: Boolean)
 

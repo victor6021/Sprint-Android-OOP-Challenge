@@ -70,11 +70,11 @@ class ItemListActivity : AppCompatActivity() {
 
                 val civilization = ageOfEmpiresTwo?.civil?.civilizations
 
-                val unit = ageOfEmpiresTwo?.units?.units
+                val unit = ageOfEmpiresTwo?.units?.unit
 
-                val structure = ageOfEmpiresTwo?.structures?.structures
+                val structure = ageOfEmpiresTwo?.structures?.structure
 
-                val technology = ageOfEmpiresTwo?.technologies?.technologies
+                val technology = ageOfEmpiresTwo?.technologies?.technology
             }
 
         })
@@ -94,7 +94,7 @@ class ItemListActivity : AppCompatActivity() {
 
     class SimpleItemRecyclerViewAdapter(
         private val parentActivity: ItemListActivity,
-        private val values: List<DummyContent.DummyItem>,
+        private val values: MutableList<DummyContent.AgeOfEmpiresTwo>,
         private val twoPane: Boolean
     ) :
         RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder>() {
@@ -103,7 +103,7 @@ class ItemListActivity : AppCompatActivity() {
 
         init {
             onClickListener = View.OnClickListener { v ->
-                val item = v.tag as DummyContent.DummyItem
+                val item = v.tag as AgeOfEmpiresTwo
                 if (twoPane) {
                     val fragment = ItemDetailFragment().apply {
                         arguments = Bundle().apply {
