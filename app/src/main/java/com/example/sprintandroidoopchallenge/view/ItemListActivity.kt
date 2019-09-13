@@ -68,13 +68,13 @@ class ItemListActivity : AppCompatActivity() {
             ) {
                 val ageOfEmpiresTwo = response.body()
 
-                val civilization = ageOfEmpiresTwo?.civilizations?.
+                val civilization = ageOfEmpiresTwo?.civilizations
 
-                val unit = response.body()
+                val unit = ageOfEmpiresTwo?.units
 
-                val structure = response.body()
+                val structure = ageOfEmpiresTwo?.structures
 
-                val technology = response.body()
+                val technology = ageOfEmpiresTwo?.technologies
             }
 
         })
