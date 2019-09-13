@@ -9,9 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import com.example.sprintandroidoopchallenge.R
-import com.example.sprintandroidoopchallenge.api.AoETwoInstance
-
 import com.example.sprintandroidoopchallenge.dummy.DummyContent
 import com.example.sprintandroidoopchallenge.model.AgeOfEmpiresTwo
 import kotlinx.android.synthetic.main.activity_item_list.*
@@ -57,6 +56,14 @@ class ItemListActivity : AppCompatActivity() {
         setupRecyclerView(item_list)
     }
 
+    companion object{
+        fun showToast(view: View, message: String?){
+            message?.let {
+                Toast.makeText(view.context, it, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
     private fun setupRecyclerView(recyclerView: RecyclerView) {
         recyclerView.adapter =
             SimpleItemRecyclerViewAdapter(
@@ -81,7 +88,7 @@ class ItemListActivity : AppCompatActivity() {
                 if (twoPane) {
                     val fragment = ItemDetailFragment().apply {
                         arguments = Bundle().apply {
-                            putString(ItemDetailFragment.ARG_ITEM_ID, item.civil.civilizations?.get(1)?.id)
+                            putString(ItemDetailFragment.ARG_ITEM_ID, item.civil.civilizations[1].id)
                         }
                     }
                     parentActivity.supportFragmentManager
@@ -90,7 +97,7 @@ class ItemListActivity : AppCompatActivity() {
                         .commit()
                 } else {
                     val intent = Intent(v.context, ItemDetailActivity::class.java).apply {
-                        putExtra(ItemDetailFragment.ARG_ITEM_ID, item.civil.civilizations?.get(1)?.id)
+                        putExtra(ItemDetailFragment.ARG_ITEM_ID, item.civil.civilizations[1].id)
                     }
                     v.context.startActivity(intent)
                 }
