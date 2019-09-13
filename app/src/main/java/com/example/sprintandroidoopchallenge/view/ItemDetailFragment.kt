@@ -6,9 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.sprintandroidoopchallenge.R
+import com.example.sprintandroidoopchallenge.api.AoETwoInstance
 import com.example.sprintandroidoopchallenge.dummy.DummyContent
+import com.example.sprintandroidoopchallenge.model.AgeOfEmpiresTwo
 import kotlinx.android.synthetic.main.activity_item_detail.*
 import kotlinx.android.synthetic.main.item_detail.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * A fragment representing a single Item detail screen.
@@ -35,6 +40,28 @@ class ItemDetailFragment : Fragment() {
                 activity?.toolbar_layout?.title = item?.content
             }
         }
+
+        AoETwoInstance.getAoETwo("id").enqueue(object : Callback<AgeOfEmpiresTwo> {
+            override fun onFailure(call: Call<AgeOfEmpiresTwo>, t: Throwable) {
+
+            }
+
+            override fun onResponse(
+                call: Call<AgeOfEmpiresTwo>,
+                response: Response<AgeOfEmpiresTwo>
+            ) {
+                val ageOfEmpiresTwo = response.body()
+
+                val civilization = ageOfEmpiresTwo?.civil?.civilizations?.get(1)?.id
+
+                val unit = ageOfEmpiresTwo?.units?.unit?.get(1)?.id
+
+                val structure = ageOfEmpiresTwo?.structures?.structure?.get(1)?.id
+
+                val technology = ageOfEmpiresTwo?.technologies?.technology?.get(1)?.id
+            }
+
+        })
     }
 
     override fun onCreateView(
