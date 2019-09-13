@@ -68,13 +68,13 @@ class ItemListActivity : AppCompatActivity() {
             ) {
                 val ageOfEmpiresTwo = response.body()
 
-                val civilization = ageOfEmpiresTwo?.civil?.civilizations
+                val civilization = ageOfEmpiresTwo?.civil?.civilizations?.get(1)?.id
 
-                val unit = ageOfEmpiresTwo?.units?.unit
+                val unit = ageOfEmpiresTwo?.units?.unit?.get(1)?.id
 
-                val structure = ageOfEmpiresTwo?.structures?.structure
+                val structure = ageOfEmpiresTwo?.structures?.structure?.get(1)?.id
 
-                val technology = ageOfEmpiresTwo?.technologies?.technology
+                val technology = ageOfEmpiresTwo?.technologies?.technology?.get(1)?.id
             }
 
         })
@@ -107,7 +107,7 @@ class ItemListActivity : AppCompatActivity() {
                 if (twoPane) {
                     val fragment = ItemDetailFragment().apply {
                         arguments = Bundle().apply {
-                            putString(ItemDetailFragment.ARG_ITEM_ID, item.id)
+                            putString(ItemDetailFragment.ARG_ITEM_ID, item.civil.civilizations?.get(1)?.id)
                         }
                     }
                     parentActivity.supportFragmentManager
@@ -116,7 +116,7 @@ class ItemListActivity : AppCompatActivity() {
                         .commit()
                 } else {
                     val intent = Intent(v.context, ItemDetailActivity::class.java).apply {
-                        putExtra(ItemDetailFragment.ARG_ITEM_ID, item.id)
+                        putExtra(ItemDetailFragment.ARG_ITEM_ID, item.civil.civilizations?.get(1)?.id)
                     }
                     v.context.startActivity(intent)
                 }
