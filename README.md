@@ -24,19 +24,25 @@ We're going to use the Age of Empires II API (You might be experiencing of Sci-F
 
 Here's an outline of the steps with some hints:
 
-1. Create a new project using the Master/Detail template. We used this in class, AND3's Abstraction, Interfaces, and Polymorphism lesson). The template should create three classes: ItemDetailActivity, ItemListActivity, and ItemDetailFragment. You'll also be given a package with some Dummy data. We're going to replace the dummy data with a retrofit API.
+1. Create a new project using the Master/Detail template. We used this in class, AND3's Abstraction, Interfaces, and Polymorphism lesson). The template should create three classes: ItemDetailActivity, ItemListActivity, and ItemDetailFragment. You'll also be given a package with some Dummy data. We're going to replace the dummy data in the next step.
 
-2. We want to use the MVVM or MVP (do you remember the difference?) style, so create packages for your model, view, and viewmodel/presenter. Name your packages appropriately, and put your generated classes in a place that makes sense for the architecture. Note that, to use MVP, you'll need to set up an interface in your presenter so that you can notify the View when it needs to update the UI. This is the Observer pattern from class.
+2. Test out the different endpoints at [https://age-of-empires-2-api.herokuapp.com/docs]. Notice the JSON structure, in particular the attributes. Copy/paste a couple of JSON Objects representing each of the endpoints (Civilizations, Units, Structures, and Technologies). For now, you can store these objects in a scratch file until you are ready to convert it to objects from your model classes. You should take at least 2 objects of each type.
 
-3. Build your model classes. The API we are using has endpoints for civilizations, units, structures, and technologies. We want to create a list containing all the different API objects, and we want to be able to display something meaningful in our RecyclerView.
-    - You'll be provided with a set of fake data to use. Examine the data to figure out how to extract attributes from each class to construct your class hierarchy. We want to be able to put all this data in the same list structure.
+3. We want to use the MVVM or MVP style, so create packages for your model, view, and viewmodel/presenter. Name your packages appropriately, and put your generated classes in a place that makes sense for the architecture. If you choose MVP, remember that you'll probably need a reference to the View so that you can call functions on it when the data needs to be updated.
+
+4. Build your model classes. The API we are using has endpoints for civilizations, units, structures, and technologies. We want to create a list containing all the different API objects, and we want to be able to display interesting data in our RecyclerView.
+    - Examine the data you copied in step 2. to figure out how to extract attributes from each class to construct your class hierarchy. We want to be able to put objects of each type in the same list structure. You don't have to use every single attribute; it may be easier to ignore any attributes that are themselves JSON Objects or JSON Arrays (like "cost", for example), but that is up to you.
+    - Create a class hierarchy to model the API Objects.
     - In your class hierarchy, create description function that will give us information specific to each type of object, but we don't want to have to check the type (in other words, we want to use polymorphism).
     - In addition to the attributes provided in the data set, add a Boolean variable that tracks some state - choose something that interests you, perhaps `isFavorite` or `isInUse` - about the API objects. Every type of object should have this state (where is the best place to put it?). You can provide a default value of false.
     - Go to your layout files and add a TextView or other UI element to display the description you have created (`item_list_content.xml` and `item_detail.xml` are good places). Also add UI to display and change the state you have added. You might use a Button, an ImageView, a CheckBox, or something else of your choosing, just make sure you can both change the value of the object and display the value after it has changed.
 
-4. Create your ViewModel/Presenter. You don't have to use Data Binding for this part, just create a class that will hold your data. This data should hold the fake data you are provided, and the `ItemListActivity` will create a member variable to hold the ViewModel/Presenter. When it needs data, the `ItemListActivity` should get the data from the ViewModel/Presenter.
+5. Create your ViewModel/Presenter.
+    - You don't have to use Data Binding for this part, just create a ViewModel/Presenter that will hold your data.
+    - Convert the data you collected in 2 into a list of API objects held in the ViewModel/Presenter
+    - Replace all the DummyItem object references from the project template with the objects you have created. You'll have to create a instance of the ViewModel/Presenter in your ItemListActivity to do this.
 
-5. In the ItemDetailFragment, you will create a way to let the attached Activity show a Toast message when the state has changed on the detail.
+6. In the ItemDetailFragment, you will create a way to let the attached Activity show a Toast message when the state has changed on the detail.
     - Inside your Fragment class, create an interface that has a single method. This method should pass back an API object.
     - Make the two Activities implement your Fragment interface. In the interface function for each Activity, show a Toast that displays information about the item that was changed and the Activity that is showing the Toast.
     - In your Fragment's onAttach method, store the Activity in a member variable so that you can call it when your UI element is activated (onClickListener or otherwise).
@@ -54,6 +60,7 @@ Here's an outline of the steps with some hints:
     - You have attached and detached correctly in the Fragment.
     - You are showing a Toast in each Activity that shows information about the item and the Activity.
 
-STRETCH GOALS
+STRETCH GOALS (You don't have to do these in order. Choose whichever one(s) you like!)
 1. Try to use Data Binding or LiveData in your ViewModel/Presenter. We haven't covered LiveData in class yet, so it may be very challenging.
 2. Create a retrofit package and build a set of retrofit calls to get data from the server instead of the provided data. In your ViewModel/Presenter, set up calls to fetch the data.
+3. Improve the layouts for displaying the objects (item_list_content.xml and activity_item_detail.xml) with colors, fonts, or images.
