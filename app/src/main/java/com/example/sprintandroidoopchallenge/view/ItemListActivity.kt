@@ -10,11 +10,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.sprintandroidoopchallenge.R
+import com.example.sprintandroidoopchallenge.api.AoETwoInstance
 
 import com.example.sprintandroidoopchallenge.dummy.DummyContent
+import com.example.sprintandroidoopchallenge.model.AgeOfEmpiresTwo
 import kotlinx.android.synthetic.main.activity_item_list.*
 import kotlinx.android.synthetic.main.item_list_content.view.*
 import kotlinx.android.synthetic.main.item_list.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * An activity representing a list of Pings. This activity
@@ -51,6 +56,29 @@ class ItemListActivity : AppCompatActivity() {
             // activity should be in two-pane mode.
             twoPane = true
         }
+
+        AoETwoInstance.getAoETwo("id").enqueue(object : Callback<AgeOfEmpiresTwo>{
+            override fun onFailure(call: Call<AgeOfEmpiresTwo>, t: Throwable) {
+
+            }
+
+            override fun onResponse(
+                call: Call<AgeOfEmpiresTwo>,
+                response: Response<AgeOfEmpiresTwo>
+            ) {
+                val ageOfEmpiresTwo = response.body()
+
+                val civilization = ageOfEmpiresTwo?.civilizations?.
+
+                val unit = response.body()
+
+                val structure = response.body()
+
+                val technology = response.body()
+            }
+
+        })
+
 
         setupRecyclerView(item_list)
     }
