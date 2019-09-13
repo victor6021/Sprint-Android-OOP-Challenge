@@ -55,5 +55,5 @@ Requirements
     - You are showing a Toast in each Activity that shows information about the item and the Activity.
 
 STRETCH GOALS
-5. Try to use Data Binding or LiveData in your ViewModel. We haven't covered LiveData in class yet, so it may be very challenging.
-6. Create a retrofit package and build a set of retrofit calls to get data from the server instead of the dummy data. In your ViewModel, set up calls to fetch the data.
+1. Try to use Data Binding or LiveData in your ViewModel. We haven't covered LiveData in class yet, so it may be very challenging.
+2. Create a retrofit package and build a set of retrofit calls to get data from the server instead of the dummy data. In your ViewModel, set up calls to fetch the data.
