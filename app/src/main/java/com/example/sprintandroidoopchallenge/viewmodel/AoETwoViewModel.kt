@@ -4,21 +4,21 @@ import com.example.sprintandroidoopchallenge.model.AgeOfEmpiresTwo
 
 class AoETwoViewModel {
 
-    private var aoetwo: AgeOfEmpiresTwo = AgeOfEmpiresTwo("","","","")
+    private var aoeTwo: AgeOfEmpiresTwo = AgeOfEmpiresTwo("","","","")
 
     fun getCivilization(): String?{
-        return aoetwo.civil.civilizations.id
+        return aoeTwo.civil.civilizations.id
     }
 
     fun getUnit():String?{
-        return aoetwo.units.unit.id
+        return aoeTwo.units.unit.id
     }
 
     fun getStructure():String?{
-        return aoetwo.structures.structure.id
+        return aoeTwo.structures.structure.id
     }
 
     fun getTech(): String?{
-        return aoetwo.technologies.technology.id
+        return aoeTwo.technologies.technology.id
     }
 }
